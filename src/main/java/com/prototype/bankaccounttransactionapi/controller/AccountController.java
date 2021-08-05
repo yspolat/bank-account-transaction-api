@@ -24,15 +24,13 @@ public class AccountController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping("/accounts")
+    @GetMapping("/account/all")
     public ResponseEntity<List<Account>> getAllAccounts(){
-        LOGGER.info("getAllAccounts");
         return ResponseEntity.ok().body(accountService.getAllAccounts());
     }
 
-    @PostMapping("/accounts")
+    @PostMapping("/account")
     public ResponseEntity<String> createAccount(@RequestBody AccountRequest accountRequest) throws Exception {
-        LOGGER.info("createAccount: customerId: " + accountRequest.getCustomerID() + "initialCredit: " + accountRequest.getInitialCredit());
         return accountService.createAccount(accountRequest);
     }
 }

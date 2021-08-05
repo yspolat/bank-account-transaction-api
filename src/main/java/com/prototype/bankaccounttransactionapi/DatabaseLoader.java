@@ -1,7 +1,6 @@
 package com.prototype.bankaccounttransactionapi;
 
 import com.prototype.bankaccounttransactionapi.model.Customer;
-import com.prototype.bankaccounttransactionapi.repository.AccountRepository;
 import com.prototype.bankaccounttransactionapi.repository.CustomerRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
