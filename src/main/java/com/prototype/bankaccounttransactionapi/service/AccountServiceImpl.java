@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
         Account account = new Account();
         account.setAccountName(accountRequest.getAccountName());
         account.setInitialCredit(initialCredit);
-        account.setCustomer(customer);
+        account.setCustomerId(accountRequest.getCustomerID());
         this.accountRepository.save(account);
 
         if (initialCredit > 0) {

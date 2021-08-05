@@ -1,6 +1,7 @@
 package com.prototype.bankaccounttransactionapi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ public class Account {
     private @Id @GeneratedValue Long accountId;
 
     @Column(name = "account_name")
+    @JsonProperty("accountName")
     private String accountName;
 
     @Column(name = "transactions")
@@ -26,13 +28,12 @@ public class Account {
     @Column(name = "initial_credit")
     private double initialCredit;
 
-    @ManyToOne
-    @JoinColumn(name="customer_id")
-    @JsonBackReference
-    private Customer customer;
+    @Column(name = "customer_id")
+    @JsonProperty("customerId")
+    private Long customerId = null;
 
-    public Account(Customer customer, String accountName, List transactions, double initialCredit) {
-        this.customer = customer;
+    public Account(Long customerId, String accountName, List transactions, double initialCredit) {
+        this.customerId = customerId;
         this.accountName = accountName;
         this.transactions = transactions;
         this.initialCredit = initialCredit;
@@ -43,7 +44,7 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Double.compare(account.initialCredit, initialCredit) == 0 && Objects.equals(accountId, account.accountId) && Objects.equals(accountName, account.accountName) && Objects.equals(transactions, account.transactions) && Objects.equals(customer, account.customer);
+        return Double.compare(account.initialCredit, initialCredit) == 0 && Objects.equals(accountId, account.accountId) && Objects.equals(accountName, account.accountName) && Objects.equals(transactions, account.transactions) && Objects.equals(customerId, account.customerId);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class Account {
                 ", accountName='" + accountName + '\'' +
                 ", transactions=" + transactions +
                 ", initialCredit=" + initialCredit +
-                ", customer=" + customer +
+                ", customerId=" + customerId +
                 '}';
     }
 }

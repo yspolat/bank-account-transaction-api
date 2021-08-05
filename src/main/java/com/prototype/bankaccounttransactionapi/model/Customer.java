@@ -1,5 +1,6 @@
 package com.prototype.bankaccounttransactionapi.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,7 +19,10 @@ public class Customer {
     private String name;
     private String surname;
     private double balance;
-    @OneToMany(mappedBy="customer", fetch = FetchType.LAZY, orphanRemoval = true)
+
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    @JsonProperty("accounts")
     private List<Account> accounts;
 
     public Customer(String name, String surname, double balance, List <Account> accounts) {
