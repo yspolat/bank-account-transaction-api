@@ -7,7 +7,7 @@ This open source REST API for banks that enables account holders to interact wit
 
 ## Setup
 
-The project uses Maven as its build tool.
+The project uses Maven as its build tool and Spring Boot as framework.
 
 
 To build the project 
@@ -21,7 +21,7 @@ Run application without IDE
 java -jar bank-account-transaction-api-0.0.1-SNAPSHOT.jar
 ```
 
-OR import the project as Maven to your favorite IDE and run the application
+OR import the project as Maven to your favorite IDE and run Spring Boot application
 
 ## Database
 
