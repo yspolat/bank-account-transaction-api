@@ -5,6 +5,7 @@ import com.prototype.bankaccounttransactionapi.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +27,12 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{customer_id}")
-    public ResponseEntity getCustomer(@PathVariable long customer_id) {
+    public ResponseEntity getCustomer(@PathVariable long customer_id) throws Exception {
+
+        Customer customer = customerService.getCustomerByCustomerID(customer_id);
+        if (customer == null) {
+            throw new Exception("Customer Not Found");
+        }
         return ResponseEntity.ok().body(customerService.getCustomerByCustomerID(customer_id));
     }
 }

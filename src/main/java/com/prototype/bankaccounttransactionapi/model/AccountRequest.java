@@ -22,4 +22,7 @@ public class AccountRequest {
         this.initialCredit = initialCredit;
         this.accountName = accountName;
     }
+
+    public AccountRequest() {
+    }
 }

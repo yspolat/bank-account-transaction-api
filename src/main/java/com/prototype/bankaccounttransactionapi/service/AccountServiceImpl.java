@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -55,5 +56,11 @@ public class AccountServiceImpl implements AccountService {
             transactionService.createTransaction(transaction);
         }
         return new ResponseEntity<>("Account has been added!", HttpStatus.OK);
+    }
+
+    @Override
+    public Account getAccountByAccountID(long accountID) {
+        Optional<Account> account = accountRepository.findById(accountID);
+        return account.isPresent() ? account.get() : null;
     }
 }
