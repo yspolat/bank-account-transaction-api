@@ -1,4 +1,4 @@
-package com.prototype.bankaccounttransactionapi;
+package com.prototype.bankaccounttransactionapi.utils;
 
 import com.prototype.bankaccounttransactionapi.model.Customer;
 import com.prototype.bankaccounttransactionapi.repository.CustomerRepository;
